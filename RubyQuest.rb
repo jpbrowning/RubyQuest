@@ -15,7 +15,7 @@ width = `/usr/bin/env tput cols`.to_i
 
 
 puts `clear`
-puts width
+
 $fixedWidth = false
 if width < 60
   puts "Please extend terminal horizontally!"
@@ -63,6 +63,6 @@ room1 = Room.new()
 room1.buildRoom
 puts room1.object_one
 puts room1.object_two
-puts room2.object_three
+puts room1.object_three
 
 #puts Map
