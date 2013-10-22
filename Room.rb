@@ -15,14 +15,14 @@ class Room
   attr_accessor :object_two
   attr_accessor :object_three
   
-  objs = [Door, Chest, Knife, Body, Vial, Key, Windows, Herb]
-  doorAttr = [Old, New, Dusty, Moldy, Broken, Creaky]
-  chestAttr = [Large, Small, Glowing]
-  knifeAttr = [Sharp, Dull]
-  bodyAttr = [Rotting, Fresh, Bloodied]
-  vialAttr = [Large, Small, Max]
-  windowAttr = [Broken, Clear, Opaque, Opened, Closed]
-  herbAtt = [Green, Yellow, Red]
+  objs = ["Door", "Chest", "Knife", "Body", "Vial", "Key", "Windows", "Herb"]
+  doorAttr = ["Old", "New", "Dusty", "Moldy", "Broken", "Creaky"]
+  chestAttr = ["Large", "Small", "Glowing"]
+  knifeAttr = ["Sharp", "Dull"]
+  bodyAttr = ["Rotting", "Fresh", "Bloodied"]
+  vialAttr = ["Large", "Small", "Max"]
+  windowAttr = ["Broken", "Clear", "Opaque", "Opened", "Closed"]
+  herbAtt = ["Green", "Yellow", "Red"]
   
   def buildRoom()
     
