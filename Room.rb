@@ -8,7 +8,7 @@
 # Rooms are randomly generated-- this means that the contents
 # within the room are never the same.
 
-require "Object.rb"
+require "QuestObject"
 
 class Room
   attr_accessor :object_one
@@ -80,8 +80,8 @@ class Room
       attrZ = herbAttr[Random.rand(2)] 
     end
     
-    @object_one = Object.new(objX,attrX)
-    @object_two = Object.new(objY,attrY)
-    @object_three = Object.new(objZ,attrZ)
+    @object_one = QuestObject.new(objX,attrX)
+    @object_two = QuestObject.new(objY,attrY)
+    @object_three = QuestObject.new(objZ,attrZ)
   end
 end

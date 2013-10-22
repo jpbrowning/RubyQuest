@@ -3,7 +3,7 @@
 # Object.rb
 
 
-class Object
+class QuestObject
   attr_accessor :obj_name
   attr_accessor :obj_attr
   
