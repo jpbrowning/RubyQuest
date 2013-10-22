@@ -56,7 +56,7 @@ if $fixedWidth
   puts "AND NOW........".center(width)
 end
 puts "\nWelcome to Ruby Quest v0.2\n\n"
-puts "Story... WRITE IT DOOD"
+puts "Story... Testing Bancroft"
 
 
 room1 = Room.new()
