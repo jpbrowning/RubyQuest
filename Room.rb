@@ -8,6 +8,7 @@
 # Rooms are randomly generated-- this means that the contents
 # within the room are never the same.
 
+require "Object.rb"
 
 class Room
   objs = [Door, Chest, Knife, Body, Vial, Key, Windows, Herb]
@@ -19,10 +20,10 @@ class Room
   windowAttr = [Broken, Clear, Opaque, Opened, Closed]
   herbAtt = [Green, Yellow, Red]
   
-  def buildRoom(x,y,z)
-    objX = objs[x]
-    objY = objs[y]
-    objZ = objs[z]
+  def buildRoom()
+    objX = objs[Random.rand(5)]
+    objY = objs[Random.rand(5)]
+    objZ = objs[Random.rand(5)]
     
     case x
     when 0
