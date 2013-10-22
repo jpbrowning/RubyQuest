@@ -25,9 +25,13 @@ class Room
   herbAtt = [Green, Yellow, Red]
   
   def buildRoom()
-    objX = objs[Random.rand(5)]
-    objY = objs[Random.rand(5)]
-    objZ = objs[Random.rand(5)]
+    
+    x = Random.rand(5)
+    y = Random.rand(5)
+    z = Random.rand(5)
+    objX = objs[x]
+    objY = objs[y]
+    objZ = objs[z]
     
     case x
     when 0
