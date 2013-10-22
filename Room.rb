@@ -11,6 +11,10 @@
 require "Object.rb"
 
 class Room
+  attr_accessor :object_one
+  attr_accessor :object_two
+  attr_accessor :object_three
+  
   objs = [Door, Chest, Knife, Body, Vial, Key, Windows, Herb]
   doorAttr = [Old, New, Dusty, Moldy, Broken, Creaky]
   chestAttr = [Large, Small, Glowing]
@@ -76,10 +80,8 @@ class Room
       attrZ = herbAttr[Random.rand(2)] 
     end
     
-    firstObj = Object.new(objX,attrX)
-    secondObj = Object.new(objY,attrY)
-    thirdObj = Object.new(objZ,attrZ)
+    @object_one = Object.new(objX,attrX)
+    @object_two = Object.new(objY,attrY)
+    @object_three = Object.new(objZ,attrZ)
   end
-  
-  
 end
