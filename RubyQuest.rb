@@ -5,6 +5,8 @@
 #
 # 
 
+require "Room.rb"
+
 width = `/usr/bin/env tput cols`.to_i
 
 
