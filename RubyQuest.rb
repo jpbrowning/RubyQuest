@@ -66,4 +66,4 @@ puts room1.object_two
 puts room1.object_three
 
 #puts Map
-# name test
+# name test 2
