@@ -56,4 +56,11 @@ end
 puts "\nWelcome to Ruby Quest v0.2\n\n"
 puts "Story... WRITE IT DOOD"
 
+
+room1 = Room.new()
+room1.buildRoom
+puts room1.object_one
+puts room1.object_two
+puts room2.object_three
+
 #puts Map
