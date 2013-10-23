@@ -54,7 +54,7 @@ puts "O-----------------------------------------------O".center(width)
 
 if $fixedWidth
   puts "\n"
-  puts "Thank you for extending your terminal!".center(width)
+  puts "Thank you for scaling your terminal!".center(width)
   puts "AND NOW........".center(width)
 end
 puts "\nWelcome to Ruby Quest v0.2\n\n"
