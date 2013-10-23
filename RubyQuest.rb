@@ -6,7 +6,7 @@
 # 
 
 require "Room"
-require "Object"
+require "QuestObject"
 
 
 width = `/usr/bin/env tput cols`.to_i
@@ -58,8 +58,7 @@ end
 puts "\nWelcome to Ruby Quest v0.2\n\n"
 puts "Story... Testing Bancroft v2"
 
-
-room1 = Room.new()
+room1 = Room.new
 room1.buildRoom
 puts room1.object_one
 puts room1.object_two

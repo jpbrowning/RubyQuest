@@ -8,9 +8,15 @@ class QuestObject
   attr_accessor :obj_attr
   
   def initialize( objn, obja)
-    @obj_name = objn
-    @obj_attr = obja
-  end 
+    $obj_name = objn
+    $obj_attr = obja
+  #end
+
+  #def sayObject()
+    print $obj_name
+    print " which is "
+    puts $obj_attr
+  end
   
 end
 
