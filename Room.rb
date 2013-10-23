@@ -38,56 +38,77 @@ class Room
     case x
     when 0
       attrX = $doorAttr[rand(5)]
+      attrSX = $doorAttr[rand(5)]
     when 1
       attrX = $chestAttr[rand(2)]
+      attrSX = $chestAttr[rand(2)]
     when 2
       attrX = $knifeAttr[rand(1)] 
+      attrSX = $knifeAttr[rand(1)]
     when 3
       attrX = $bodyAttr[rand(2)]
+      attrSX = $bodyAttr[rand(2)]
     when 4
-      attrX = $vialAttr[rand(2)] 
+      attrX = $vialAttr[rand(2)]
+      attrSX = $vialAttr[rand(2)]  
     when 5
       attrX = $windowAttr[rand(4)] 
+      attrSX = $windowAttr[rand(4)] 
     when 6
       attrX = $herbAttr[rand(2)]
+      attrSX = $herbAttr[rand(2)]
     end
     
     case y
     when 0
       attrY = $doorAttr[rand(5)]
+      attrSY = $doorAttr[rand(5)]
     when 1
       attrY = $chestAttr[rand(2)]
+      attrSY = $chestAttr[rand(2)]
     when 2
-      attrY = $knifeAttr[rand(1)] 
+      attrY = $knifeAttr[rand(1)]
+      attrSY = $knifeAttr[rand(1)] 
     when 3
       attrY = $bodyAttr[rand(2)]
+      attrSY = $bodyAttr[rand(2)]
     when 4
-      attrY = $vialAttr[rand(2)] 
+      attrY = $vialAttr[rand(2)]
+      attrSY = $vialAttr[rand(2)] 
     when 5
       attrY = $windowAttr[rand(4)] 
+      attrSY = $windowAttr[rand(4)] 
     when 6
       attrY = $herbAttr[rand(2)] 
+      attrSY = $herbAttr[rand(2)] 
     end
     
     case z
     when 0
       attrZ = $doorAttr[rand(5)]
+      attrSZ = $doorAttr[rand(5)]
     when 1
       attrZ = $chestAttr[rand(2)]
+      attrSZ = $chestAttr[rand(2)]
     when 2
       attrZ = $knifeAttr[rand(1)] 
+      attrSZ = $knifeAttr[rand(1)]
     when 3
       attrZ = $bodyAttr[rand(2)]
+      attrSZ = $bodyAttr[rand(2)]
     when 4
       attrZ = $vialAttr[rand(2)] 
+      attrSZ = $vialAttr[rand(2)] 
     when 5
       attrZ = $windowAttr[rand(4)] 
+      attrSZ = $windowAttr[rand(4)] 
     when 6
       attrZ = $herbAttr[rand(2)] 
+      attrSZ = $herbAttr[rand(2)] 
     end
     
-    $object_one = QuestObject.new(objX,attrX)
-    $object_two = QuestObject.new(objY,attrY)
-    $object_three = QuestObject.new(objZ,attrZ)
+    $object_one = QuestObject.new(objX,attrX,attrSX)
+    $object_two = QuestObject.new(objY,attrY,attrSY)
+    $object_three = QuestObject.new(objZ,attrZ,attrSZ)
   end
 end
