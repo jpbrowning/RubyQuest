@@ -3,6 +3,9 @@
 # Object.rb
 
 
+# So, some my class stuff isn't working properly....
+# This is le broken
+
 class QuestObject
   attr_accessor :obj_name
   attr_accessor :obj_attr
@@ -25,4 +28,4 @@ class QuestObject
 end
 
 
-#this is a test
+
