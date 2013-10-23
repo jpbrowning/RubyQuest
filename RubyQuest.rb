@@ -57,7 +57,7 @@ if $fixedWidth
   puts "Thank you for scaling your terminal!".center(width)
   puts "AND NOW........".center(width)
 end
-puts "\nWelcome to Ruby Quest v0.7\n\n"
+puts "\nWelcome to Ruby Quest v0.8\n\n"
 
 puts "Press 'ENTER' to continue...."
 
@@ -67,7 +67,7 @@ puts `clear`
 
 
 puts "Welcome to the first room, you enter, look around and you see:"
-room1 = Room.new
+room1 = Room.new(rand(4))
 room1.buildRoom
 puts "What would you like to do?"
 puts " "
