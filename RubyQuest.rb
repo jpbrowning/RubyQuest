@@ -57,7 +57,7 @@ if $fixedWidth
   puts "Thank you for scaling your terminal!".center(width)
   puts "AND NOW........".center(width)
 end
-puts "\nWelcome to Ruby Quest v0.2\n\n"
+puts "\nWelcome to Ruby Quest v0.7\n\n"
 
 puts "Press 'ENTER' to continue...."
 
