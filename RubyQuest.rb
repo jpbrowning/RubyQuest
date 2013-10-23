@@ -60,9 +60,9 @@ puts "Story... Testing Bancroft v2"
 
 room1 = Room.new
 room1.buildRoom
-puts room1.object_one
-puts room1.object_two
-puts room1.object_three
+#puts room1.object_one
+#puts room1.object_two
+#puts room1.object_three
 
 #puts Map
 # name test 2
