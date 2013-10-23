@@ -8,7 +8,7 @@ class QuestObject
   attr_accessor :obj_attr
   attr_accessor :obj_secondattr
   
-  def initialize( objn, obja, objsa)
+  def initialize( objn, obja, objsa )
     $obj_name = objn
     $obj_attr = obja
     $obj_secondattr = objsa
@@ -19,7 +19,7 @@ class QuestObject
     print " which is "
     print $obj_attr
     print " & "
-    puts $obj_secondatr
+    puts $obj_secondattr
   end
   
 end

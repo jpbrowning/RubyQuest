@@ -10,22 +10,24 @@ require "QuestObject"
 
 
 width = `/usr/bin/env tput cols`.to_i
+height = `/usr/bin/env tput lines`.to_i
 
 
 
 
 puts `clear`
 
+
 $fixedWidth = false
-if width < 60
-  puts "Please extend terminal horizontally!"
+if width < 60 or height < 24
+  puts "Please scale larger!"
   $fixedWidth = true
 end
 
-while width < 60
+while width < 60 or height < 24
   width = `/usr/bin/env tput cols`.to_i 
+  height = `/usr/bin/env tput lines`.to_i
 end
-
 
 
 puts "\n"
@@ -56,10 +58,24 @@ if $fixedWidth
   puts "AND NOW........".center(width)
 end
 puts "\nWelcome to Ruby Quest v0.2\n\n"
-puts "Story... Testing Bancroft v2"
 
+puts "Press any key to continue...."
+
+gets #wait for user input
+
+puts `clear`
+
+
+puts "Welcome to the first room, you enter, look around and you see:"
 room1 = Room.new
 room1.buildRoom
+puts "What would you like to do?"
+puts " "
+puts " "
+puts " "
+puts "Well, that's the game, press any key to end..."
+gets
+
 #puts room1.object_one
 #puts room1.object_two
 #puts room1.object_three
