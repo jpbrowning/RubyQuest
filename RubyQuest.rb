@@ -59,7 +59,7 @@ if $fixedWidth
 end
 puts "\nWelcome to Ruby Quest v0.2\n\n"
 
-puts "Press any key to continue...."
+puts "Press 'ENTER' to continue...."
 
 gets #wait for user input
 
@@ -73,7 +73,7 @@ puts "What would you like to do?"
 puts " "
 puts " "
 puts " "
-puts "Well, that's the game, press any key to end..."
+puts "Well, that's the game, press 'ENTER' to end..."
 gets
 
 #puts room1.object_one
