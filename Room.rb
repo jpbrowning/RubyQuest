@@ -20,7 +20,7 @@ class Room
   $doorAttr = ["Old", "New", "Dusty", "Moldy", "Broken", "Creaky"]
   $doorAttrS = ["White", "Brown", "Maple", "Pine", "Cherry Wood", "Bamboo"]
   $chestAttr = ["Large", "Small", "Glowing"]
-  $chestAttrS = ["Omnious", "Overbearing", "On-Fire"]
+  $chestAttrS = ["Omnious", "Creepy", "On-Fire"]
   $knifeAttr = ["Sharp", "Dull"]
   $knifeAttrS = ["Matte", "Glistening"]
   $bodyAttr = ["Rotting", "Fresh", "Bloodied"]
