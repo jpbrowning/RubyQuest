@@ -1,7 +1,7 @@
 # James Browning
 # Joey De Lorenzo
 
-# Object.rb
+# Game.rb
 
 require "Room"
 require "QuestObject"
