@@ -19,38 +19,43 @@ class QuestObject
   $bodyAttrS = ["Covered in flies", "Clothed", "Naked"]
   $vialAttr = ["Large", "Small", "Max"]
   $vialAttrS = ["Purple", "Red", "Yellow"]
+  $keyAttr = ["Large", "Small"]
+  $keyAttrS = ["Ornate", "Plain"]
   $windowAttr = ["Broken", "Clear", "Opaque", "Opened", "Closed"]
   $windowAttrS = ["Covered", "Barred", "Taped Off", "Large", "Small"]
-  $herbAtt = ["Green", "Yellow", "Red"]
-  $herbAttS = ["Fresh", "Wilted", "Spritely"]
+  $herbAttr = ["Green", "Yellow", "Red"]
+  $herbAttrS = ["Fresh", "Wilted", "Spritely"]
 
   
   def buildObject()
-    x = rand(5)
+    x = rand(8)
 
     objX = $objs[x]
     case x
     when 0
-      attrX = $doorAttr[rand(5)]
-      attrSX = $doorAttrS[rand(5)]
+      attrX = $doorAttr[rand(6)]
+      attrSX = $doorAttrS[rand(6)]
     when 1
-      attrX = $chestAttr[rand(2)]
-      attrSX = $chestAttrS[rand(2)]
+      attrX = $chestAttr[rand(3)]
+      attrSX = $chestAttrS[rand(3)]
     when 2
-      attrX = $knifeAttr[rand(1)] 
-      attrSX = $knifeAttrS[rand(1)]
+      attrX = $knifeAttr[rand(2)] 
+      attrSX = $knifeAttrS[rand(2)]
     when 3
-      attrX = $bodyAttr[rand(2)]
-      attrSX = $bodyAttrS[rand(2)]
+      attrX = $bodyAttr[rand(3)]
+      attrSX = $bodyAttrS[rand(3)]
     when 4
-      attrX = $vialAttr[rand(2)]
-      attrSX = $vialAttrS[rand(2)]  
+      attrX = $vialAttr[rand(3)]
+      attrSX = $vialAttrS[rand(3)]  
     when 5
-      attrX = $windowAttr[rand(4)] 
-      attrSX = $windowAttrS[rand(4)] 
+      attrX = $keyAttr[rand(2)] 
+      attrSX = $keyAttrS[rand(2)] 
     when 6
-      attrX = $herbAttr[rand(2)]
-      attrSX = $herbAttrS[rand(2)]
+      attrX = $windowAttr[rand(5)] 
+      attrSX = $windowAttrS[rand(5)] 
+    when 7
+      attrX = $herbAttr[rand(3)]
+      attrSX = $herbAttrS[rand(3)]
     end
 
     $obj_name = objX
@@ -64,9 +69,3 @@ class QuestObject
 
   end
 end
-
-
-
-
-
-#this is a test
