@@ -1,17 +1,23 @@
-# James Browning
-# Joey De Lorenzo
+# @author Joey De Lorenzo
+# @author James Browning
 
 # Game.rb
+# This holds the instance of a game.
 
-require "Room"
-require "QuestObject"
+require "Floor"
 
 class Game
+        attr_accessor :protagonist
+        attr_accessor :progress
+        attr_accessor :floor_arr
+        #attr_accessor :
 
-	def initialize()
-		puts "Welcome to the dungeon. You open the front door and enter the first room. In this room, you look around and see:"
-		
-		room1 = Room.new(rand(4))
-		room1.buildRoom
-	end
+        def initialize()
+                floor_arr = Array.new
+        end
+
+        def buildGame()
+                thisFloor = Floor.new(3)
+                thisFloor.buildFloor
+        end
 end
