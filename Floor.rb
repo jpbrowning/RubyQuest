@@ -8,26 +8,25 @@
 
 
 require "Room"
-require "Game"
 require "QuestObject"
 
 
 class Floor
-	attr_accessor :room_arr
-	attr_accessor :num_of_rooms
+        attr_accessor :room_arr
+        attr_accessor :num_of_rooms
 
-	def initialize( x )
-		$num_of_rooms = x
-		$room_arr = Array.new
-	end
+        def initialize( x )
+                $num_of_rooms = x
+                $room_arr = Array.new
+        end
 
-	def buildFloor( ) 
-		i = 0;
-		while i < $num_of_rooms
-			thisRoom = Room.new(1)
-			thisRoom.buildRoom
-			$room_arr << thisRoom
-			i = i + 1;
-		end
-	end
+        def buildFloor( )
+                i = 0;
+                while i < $num_of_rooms
+                        thisRoom = Room.new(1)
+                        thisRoom.buildRoom
+                        $room_arr << thisRoom
+                        i = i + 1;
+                end
+        end
 end
