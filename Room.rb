@@ -22,6 +22,11 @@ class Room
     
   def buildRoom()
     i = 0
+    
+    if $num_objs == 0 		#Handle empty room
+    	puts "Nothing particularly interesting."
+    end
+    
     while i < $num_objs
       q = QuestObject.new
       $objs_arr << q.buildObject
