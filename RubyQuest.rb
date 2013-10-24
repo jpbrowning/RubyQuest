@@ -5,9 +5,7 @@
 #
 # 
 
-require "Room"
-require "QuestObject"
-
+require "Game"
 
 width = `/usr/bin/env tput cols`.to_i
 height = `/usr/bin/env tput lines`.to_i
@@ -65,20 +63,15 @@ gets #wait for user input
 
 puts `clear`
 
+puts "Please choose an option:"
+puts "\t1. New game"
+puts "\t2. Quit"
+$option = gets.chomp
 
-puts "Welcome to the first room, you enter, look around and you see:"
-room1 = Room.new(rand(4))
-room1.buildRoom
-puts "What would you like to do?"
-puts " "
-puts " "
-puts " "
-puts "Well, that's the game, press 'ENTER' to end..."
-gets
+if $option.to_i == 1
+	game = Game.new()
+else
+	puts "Goodbye!"
+end
 
-#puts room1.object_one
-#puts room1.object_two
-#puts room1.object_three
 
-#puts Map
-# name test 2
