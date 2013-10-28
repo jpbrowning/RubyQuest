@@ -8,7 +8,6 @@
 
 
 require "Room"
-require "QuestObject"
 
 
 class Floor
@@ -22,15 +21,14 @@ class Floor
 		end		
 	end
 
-	def buildFloor( )
+	def buildFloor(floor_arr)
 		i = 1;
-		
 		@room_arr[0].buildRoom(nil, @room_arr[1])
 		while i < @num_of_rooms.to_i-1
 			@room_arr[i].buildRoom(@room_arr[i-1], @room_arr[i+1])
 			i = i + 1;
 		end
-		@room_arr[i].buildRoom(@room_arr[1], nil)
+		@room_arr[i].buildRoom(@room_arr[1], floor_arr)
 		
 	end
 	
