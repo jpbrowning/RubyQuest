@@ -75,7 +75,4 @@ class QuestObject
 end
 
 
-
-
-
 #this is a test
