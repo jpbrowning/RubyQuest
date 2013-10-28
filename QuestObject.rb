@@ -26,12 +26,14 @@ class QuestObject
   $herbAttr = ["Green", "Yellow", "Red"]
   $herbAttrS = ["Fresh", "Wilted", "Spritely"]
 
-  
-  def buildObject()
-    x = rand(8)
+  def initialize
+		@x = rand(8)
 
-    objX = $objs[x]
-    case x
+      @objX = $objs[@x]
+  end
+	
+  def buildObject()
+    case @x
     when 0
       attrX = $doorAttr[rand(6)]
       attrSX = $doorAttrS[rand(6)]
@@ -58,17 +60,17 @@ class QuestObject
       attrSX = $herbAttrS[rand(3)]
     end
     
-    	$obj_name = objX
-    	$obj_attr = attrX
-    	$obj_secondattr = attrSX
+    	@obj_name = @objX
+    	@obj_attr = attrX
+    	@obj_secondattr = attrSX
   end
   
   def inspect()    
-    print $obj_name
+    print @obj_name
     print " which is "
-    print $obj_attr
+    print @obj_attr
     print " & "
-    puts $obj_secondattr
+    puts @obj_secondattr
   end
 end
 
@@ -77,4 +79,3 @@ end
 
 
 #this is a test
-
