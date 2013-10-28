@@ -69,11 +69,10 @@ puts "\t2. Quit"
 $option = gets.chomp
 
 if $option.to_i == 1
-	thisGame = Game.new
-	thisGame.buildGame
+	thisGame = Game.new()
+	thisGame.startGame()
 else
 	puts "Goodbye!"
 end
-
 
 
