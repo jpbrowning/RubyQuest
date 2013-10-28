@@ -36,9 +36,12 @@ class Room
   
   def enter()
   	puts "You enter a room. Would you like to look around? "
-  	@answer = gets.chomp
   	
-  	if @answer.to_s == "yes"
+  	system("stty raw -echo")
+  	@answer = STDIN.getc
+  	system("stty -raw echo")
+  	
+  	if @answer.chr == 'y'
   		lookAround()
   	end
   end
@@ -55,8 +58,12 @@ class Room
   	end
    
    puts "Would you like to open the door?"
-   	@answer = gets.chomp
-   	if @answer.to_s == "yes"
+   
+   	system("stty raw -echo")
+  		@answer = STDIN.getc
+  		system("stty -raw echo")
+  	
+   	if @answer.chr == 'y'
    		@door.open
   		end
   end
