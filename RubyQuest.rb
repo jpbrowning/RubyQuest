@@ -10,9 +10,6 @@ require "Game"
 width = `/usr/bin/env tput cols`.to_i
 height = `/usr/bin/env tput lines`.to_i
 
-
-
-
 puts `clear`
 
 
