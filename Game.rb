@@ -7,18 +7,12 @@
 require "Floor"
 
 class Game
-	attr_accessor :protagonist
-	attr_accessor :progress
-	attr_accessor :floor_arr
-	#attr_accessor :
-
-	def initialize()
-		floor_arr = Array.new
+	def initialize
+		@floor_arr = Array.new(3) { Floor.new(3) }
 	end
 
-	def buildGame()
-		thisFloor = Floor.new(3)
-		thisFloor.buildFloor
-		thisFloor.start()
+	def startGame()
+		@floor_arr[0].buildFloor()
+		@floor_arr[0].start()
 	end
 end
