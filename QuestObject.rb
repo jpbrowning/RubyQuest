@@ -57,15 +57,24 @@ class QuestObject
       attrX = $herbAttr[rand(3)]
       attrSX = $herbAttrS[rand(3)]
     end
-
-    $obj_name = objX
-    $obj_attr = attrX
-    $obj_secondattr = attrSX
+    
+    	$obj_name = objX
+    	$obj_attr = attrX
+    	$obj_secondattr = attrSX
+  end
+  
+  def inspect()    
     print $obj_name
     print " which is "
     print $obj_attr
     print " & "
     puts $obj_secondattr
-
   end
 end
+
+
+
+
+
+#this is a test
+
