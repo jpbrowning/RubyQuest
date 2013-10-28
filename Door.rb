@@ -1,16 +1,13 @@
 # @author Joey De Lorenzo
 # @author Trey Browning
 
-class Door
-  
-  $nextRoom
-  
+class Door  
   def buildObject(n)  
-  		$nextRoom = n
+  		@nextRoom = n
   end 
   
   def open()
-      $nextRoom.enter()
+      @nextRoom.enter()
   end
   
 end
