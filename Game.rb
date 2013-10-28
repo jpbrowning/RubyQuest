@@ -12,7 +12,8 @@ class Game
 	end
 
 	def startGame()
-		@floor_arr[0].buildFloor()
-		@floor_arr[0].start()
+		floor = @floor_arr.shift
+		floor.buildFloor(@floor_arr)
+		floor.start()
 	end
 end
