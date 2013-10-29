@@ -10,9 +10,6 @@ require "Game"
 width = `/usr/bin/env tput cols`.to_i
 height = `/usr/bin/env tput lines`.to_i
 
-
-
-
 puts `clear`
 
 
@@ -69,8 +66,8 @@ puts "\t2. Quit"
 $option = gets.chomp
 
 if $option.to_i == 1
-	thisGame = Game.new
-	thisGame.buildGame
+	thisGame = Game.new()
+	thisGame.startGame()
 else
 	puts "Goodbye!"
 end
