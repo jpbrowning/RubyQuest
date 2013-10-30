@@ -3,18 +3,18 @@
 
 class Door  
   def buildObject(n)  
-  		@nextRoom = n
+                  @nextRoom = n
   end 
   
-  def open(player)
-  		if(@nextRoom.class.name == "Room")
-      	@nextRoom.enter(player)
+  def open()
+                  if(@nextRoom.class.name == "Room")
+              @nextRoom.enter()
       elsif(@nextRoom.class.name == "Array" && @nextRoom.size > 0)
-      	nextFloor = @nextRoom.shift
-      	nextFloor.buildFloor(@nextRoom)
-      	nextFloor.start(player)
+              nextFloor = @nextRoom.shift
+              nextFloor.buildFloor(@nextRoom)
+              nextFloor.start(player)
       else
-      	puts "You have reached the end."
+              puts "You have reached the end."
       end
   end
 end
