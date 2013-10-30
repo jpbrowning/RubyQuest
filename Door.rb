@@ -13,7 +13,9 @@ class Door
               nextFloor = @nextRoom.shift
               puts "This door is leads to a stair case..."
               puts "You walk up the dark, dannk staircase onto the next floor..."
-              
+              system("stty raw -echo")
+              STDIN.getc
+              system("stty -raw echo")
               
               nextFloor.buildFloor(@nextRoom)
               nextFloor.start(player)
