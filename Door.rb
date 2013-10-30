@@ -13,6 +13,7 @@ class Door
               nextFloor = @nextRoom.shift
               puts "This door is leads to a stair case..."
               puts "You walk up the dark, dannk staircase onto the next floor..."
+              puts "[PRESS ANY KEY]".center(width)
               system("stty raw -echo")
               STDIN.getc
               system("stty -raw echo")
