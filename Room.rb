@@ -105,8 +105,10 @@ class Room
   #This prints out PRESS ANY KEY and waits for input from user
   def userIn()
     printf("\n[PRESS ANY KEY] ")
-    gets
-  	puts `clear`
+    system("stty raw -echo")
+    @answer = STDIN.getc
+    system("stty -raw echo")
+  	 puts `clear`
   end
   
   def lookAround()
