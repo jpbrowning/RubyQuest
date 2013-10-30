@@ -16,7 +16,7 @@ class Floor
 		@num_of_rooms = x
 		j = 0
 		while j < x
-			@room_arr[j] = Room.new(rand(3))
+			@room_arr[j] = Room.new(rand(3)+1)
 			j = j + 1
 		end		
 	end
