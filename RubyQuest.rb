@@ -7,23 +7,29 @@
 
 require "Game"
 
+# Gets size of user's terminal window.
 width = `/usr/bin/env tput cols`.to_i
 height = `/usr/bin/env tput lines`.to_i
 
 puts `clear`
 
-
+# This checks to make sure that the user's terminal is large enough.
 $fixedWidth = false
 if width < 60 or height < 24
-  puts "Please scale larger!"
-  $fixedWidth = true
+   puts "Please scale larger!"
+   $fixedWidth = true
 end
 
+# This does not let the user proceed until their terminal window is large enough.
 while width < 60 or height < 24
-  width = `/usr/bin/env tput cols`.to_i 
-  height = `/usr/bin/env tput lines`.to_i
+   width = `/usr/bin/env tput cols`.to_i 
+   height = `/usr/bin/env tput lines`.to_i
 end
 
+
+# This is sweet ASCII art. A website helped us with the letters.
+# http://www.network-science.de/ascii/
+# The ruby is our creation.
 
 puts "\n"
 
@@ -47,16 +53,19 @@ puts "|     | (_) | | |_| | | _|  \\__ \\    | |        |".center(width)
 puts "|      \\__\\_\\  \\___/  |___| |___/    |_|        |".center(width)
 puts "O-----------------------------------------------O".center(width)
 
+# Thank the user for dealing with our scaling requirements.
 if $fixedWidth
-  puts "\n"
-  puts "Thank you for scaling your terminal!".center(width)
-  puts "AND NOW........".center(width)
+   puts "\n"
+   puts "Thank you for scaling your terminal!".center(width)
+   puts "AND NOW........".center(width)
 end
-puts "\nWelcome to Ruby Quest v0.8\n\n"
+
+puts "\nWelcome to Ruby Quest v0.9\n\n"
 
 puts "Press 'ENTER' to continue...."
 
-gets #wait for user input
+# Wait for user to input ENTER
+gets 
 
 puts `clear`
 
@@ -64,15 +73,15 @@ puts "Please choose an option:"
 puts "\t1. New game"
 puts "\t2. Quit\n\n"
 
+# This grabs the first key the user types, and does not echo it to terminal.
 system("stty raw -echo")
 $option = STDIN.getc
 system("stty -raw echo")
 
+# Start the game!
 if $option.chr == '1'
-	thisGame = Game.new()
-	thisGame.startGame()
+   thisGame = Game.new()
+   thisGame.startGame()
 else
-	puts "Goodbye!"
+   puts "Goodbye!\n\n"
 end
-
-
