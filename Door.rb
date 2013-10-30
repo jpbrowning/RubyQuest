@@ -7,6 +7,8 @@ class Door
   end 
   
   def open(player)
+      width = `/usr/bin/env tput cols`.to_i
+    
       if(@nextRoom.class.name == "Room")
               @nextRoom.enter(player)
       elsif(@nextRoom.class.name == "Array" && @nextRoom.size > 0)
