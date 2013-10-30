@@ -6,13 +6,13 @@ class Door
   		@nextRoom = n
   end 
   
-  def open()
+  def open(player)
   		if(@nextRoom.class.name == "Room")
-      	@nextRoom.enter()
+      	@nextRoom.enter(player)
       elsif(@nextRoom.class.name == "Array" && @nextRoom.size > 0)
       	nextFloor = @nextRoom.shift
       	nextFloor.buildFloor(@nextRoom)
-      	nextFloor.start()
+      	nextFloor.start(player)
       else
       	puts "You have reached the end."
       end
