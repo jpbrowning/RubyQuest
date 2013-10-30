@@ -4,7 +4,7 @@
 # Floor.rb
 
 # This class handles a floor of our text adventure game
-# Each floor will contain a rando number of floors.
+# Each floor will contain a random number of floors.
 
 
 require "Room"
@@ -32,7 +32,7 @@ class Floor
 		
 	end
 	
-	def start()
-		@room_arr[0].enter()
+	def start(player)
+		@room_arr[0].enter(player)
 	end
 end

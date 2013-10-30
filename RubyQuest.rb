@@ -62,10 +62,13 @@ puts `clear`
 
 puts "Please choose an option:"
 puts "\t1. New game"
-puts "\t2. Quit"
-$option = gets.chomp
+puts "\t2. Quit\n\n"
 
-if $option.to_i == 1
+system("stty raw -echo")
+$option = STDIN.getc
+system("stty -raw echo")
+
+if $option.chr == '1'
 	thisGame = Game.new()
 	thisGame.startGame()
 else
