@@ -2,10 +2,13 @@
 # @author Trey Browning
 
 class Door  
+  
+  # Pass the next room in.
   def buildObject(n)  
   		@nextRoom = n
   end 
   
+  # Go to where the Door leads, be it a Room or an Array of Rooms (a floor)
   def open()
   		if(@nextRoom.class.name == "Room")
       	@nextRoom.enter()
