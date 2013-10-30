@@ -6,7 +6,7 @@ class Door
                   @nextRoom = n
   end 
   
-  def open()
+  def open(player)
                   if(@nextRoom.class.name == "Room")
               @nextRoom.enter()
       elsif(@nextRoom.class.name == "Array" && @nextRoom.size > 0)
