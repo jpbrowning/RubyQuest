@@ -24,7 +24,9 @@ class Game
 		puts "\tonly to find yourself in front of an old, rotting door.\n\n"
 		puts "\tYou slowly open the door, and step forward...\n\n"
 		puts "[PRESS ANY KEY]".center(width)
-		gets
+		system("stty raw -echo")
+  		STDIN.getc
+  		system("stty -raw echo")
 		@floor_arr = Array.new(3) { Floor.new(3) }
 	end
 
