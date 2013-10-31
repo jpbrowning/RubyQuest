@@ -30,8 +30,15 @@ class QuestObject
 
    # Decide which object this instance will be.
    def initialize
-      @x = rand(8)
-      @objX = $objs[@x]
+      @x = rand(12)
+
+			if @x == 8 or 9 or 10
+				@objX = $objs[4]
+			elsif @x == 11 or 12
+				@objX = $objs[8]
+			else
+      	@objX = $objs[@x]
+			end
    end
 
    # Apply appropriate attributes for this object type.
@@ -59,6 +66,21 @@ class QuestObject
          attrX = $windowAttr[rand(5)] 
          attrSX = $windowAttrS[rand(5)] 
       when 7
+         attrX = $herbAttr[rand(3)]
+         attrSX = $herbAttrS[rand(3)]
+			when 8
+         attrX = $vialAttr[rand(3)]
+         attrSX = $vialAttrS[rand(3)]
+			when 9
+         attrX = $vialAttr[rand(3)]
+         attrSX = $vialAttrS[rand(3)]
+			when 10
+         attrX = $vialAttr[rand(3)]
+         attrSX = $vialAttrS[rand(3)]
+			when 11
+         attrX = $herbAttr[rand(3)]
+         attrSX = $herbAttrS[rand(3)]
+			when 12
          attrX = $herbAttr[rand(3)]
          attrSX = $herbAttrS[rand(3)]
       end
