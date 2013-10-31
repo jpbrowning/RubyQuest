@@ -20,6 +20,7 @@ class Room
    @player
    @hasNPC
    @NPC
+   $arr_room_attr = ["dark", "well it", "cold", "drafty", "hot", "smelly", "humid" ]
 
    # Decide if there will be an NPC in this room or not, and create 
    # x QuestObjects in the room.
@@ -49,9 +50,10 @@ class Room
 
    # Enter this room.
    def enter(p)
+      x = rand(7)
       @player = p
       puts `clear`
-      puts "You enter a room.\n\n"
+      puts "You enter a %s room.\n\n" % $arr_room_attr[x]
       menu()
    end
 
@@ -60,12 +62,15 @@ class Room
    def menu()
       puts "What would you like to do?"
       puts "\t1. Look around.\n"
-      puts "\t2. Check inventory.\n"
+      puts "\t2. Check inventory and status.\n"
       puts "\t3. Pick up object.\n"
       puts "\t4. Open door to next room.\n"
       if @hasNPC == true
          puts "\t5. Interact with %s.\n" % @NPC.getName()
       end
+      puts ""
+      puts ""
+      puts "\tq or 'Q'. If this game is too much, and you'd like to quit..."
 
       system("stty raw -echo")
       @answer = STDIN.getc
@@ -80,10 +85,16 @@ class Room
          userIn()
          menu()
 
+			
+
       elsif @answer.chr == '3'
          if @num_objs.to_i == 0
             puts "\nThere is nothing interesting in this room."
-         else
+
+	elsif @num_objs.to_i == 0 and @hasNPC
+	    puts "\nThere is nothing of interest in this room besides the lurking baddy in the corner..."
+
+        else
             puts "\nPick up which object?"
             o = 1
             for obj in @objs_arr
@@ -123,7 +134,19 @@ class Room
          interact()
          userIn()
          menu()
+      
+			
+      elsif @answer.chr == 'q'or 'Q'
+	puts "Goodbye until next time!"
+	exit
+      
+      else
+	puts "Not a valid option!"
+	userIn()
+	menu()
+
       end
+
    end
 
    #This prints out PRESS ANY KEY and waits for input from user
