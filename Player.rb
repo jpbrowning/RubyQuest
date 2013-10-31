@@ -46,18 +46,25 @@ require "QuestObject"
 
    # Pick up a QuestObject from a Room.
    def pickUp(i)
-      @items << i
+
+			if i.obj_name == "Herb" or "Vial"
+				@hp = @hp + 10			
+			else
+      	@items << i	
+			end
    end
 
    # Output the content of the Player's inventory to the screen.
    def checkItems()
       if @items.size == 0
          puts "\nYour inventory is empty"
+				 puts "\nYour current HP is: %i" % @hp
       else
          puts "\nYour inventory contains: "
          for item in @items
          item.inspect()
          end
+				 puts "\nYour current HP is: %i" % @hp
       end
    end
 end
