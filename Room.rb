@@ -128,6 +128,7 @@ class Room
          else
             puts "\n%s is blocking the door!" % @NPC.getName()
             userIn()
+            menu()
          end
          
       elsif @answer.chr == '5'
