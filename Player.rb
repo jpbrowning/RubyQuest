@@ -47,10 +47,11 @@ require "QuestObject"
    # Pick up a QuestObject from a Room.
    def pickUp(i)
 
-			if i.obj_name == "Herb" or "Vial"
-				@hp = @hp + 10			
-			else
-      	@items << i	
+	if i.obj_name == "Herb" or "Vial"
+		puts "You're health has increased by 10 hit points!"
+		@hp = @hp + 10			
+	else
+      		@items << i	
 			end
    end
 
