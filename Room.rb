@@ -165,7 +165,8 @@ class Room
 
       while @NPC.isAlive()
          puts "What would you like to do?"
-         puts "\t1. Attack %s.\n\n" % @NPC.getName()
+         puts "\t1. Attack %s." % @NPC.getName()
+	 puts "\t2. Use item\n\n"
 
          system("stty raw -echo")
          @answer = STDIN.getc
@@ -173,7 +174,7 @@ class Room
 
          if @answer.chr == '1'
             puts `clear`
-            damage = @player.attack()
+            damage = @player.attack(0)
             if damage > 0
                puts "You attack %s for %s!\n" % [@NPC.getName(), damage.to_s]
                @NPC.takeHit(damage)
@@ -185,8 +186,24 @@ class Room
                puts "%s's health drops to %s!\n\n" % [@NPC.getName(), @NPC.getHealth().to_s]
             else
                puts "You missed!"
+	    end
+	 elsif @answer.chr == '2'
+	  retInt = @player.useItemMenu()
+	  if retInt == 0
+	    break
+	  elsif retInt == 1
+	    damage = @player.attack(1)
+	    puts "You attack %s for %s!\n" % [@NPC.getName(), damage.to_s]
+            @NPC.takeHit(damage)
+            if @NPC.getHealth() < 1
+	       puts "You have killed %s!\n\n" % @NPC.getName()
+               @hasNPC = false
+               break
             end
-         end
+            puts "%s's health drops to %s!\n\n" % [@NPC.getName(), @NPC.getHealth().to_s]
+	  end
+	 end
+	
 
          badDamage = @NPC.attack()
          if badDamage > 0
