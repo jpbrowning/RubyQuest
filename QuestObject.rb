@@ -35,22 +35,16 @@ class QuestObject
       
       if @x == 8 
 	@objX = $objs[4]
-	puts "X = 8"
       elsif @x == 9
       	@objX = $objs[4]
-      	puts "X = 9"
       elsif @x == 10
       	@objX = $objs[4]
-      	puts "X = 10"
       elsif @x == 11
 	@objX = $objs[8]
-	puts "X = 11"
       elsif @x == 12
 	@objX = $objs[8]
-	puts "X = 12"
       else
       	@objX = $objs[@x]
-      	puts "X = anything else"
       end
    end
 
@@ -110,5 +104,9 @@ class QuestObject
       print @obj_attr
       print " & "
       puts @obj_secondattr
+   end
+
+   def getName()
+     return @obj_name
    end
 end
