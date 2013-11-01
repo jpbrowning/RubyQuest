@@ -34,38 +34,109 @@ require "QuestObject"
       return @hp
    end
 
+   def prepItem(i)
+     puts "%s"  % @items[i].getName()
+   end
+
+   def removeItem(i)
+      @items.delete_at(i)
+   end
+
    # Returns the Player's health.
    def getHealth()
       return @hp
    end
 
    # Return a number based on two times the player level +/- 2.
-   def attack()
+   def attack(q)
+     if q == 0
       return @level * 2 + rand(3) - rand(3)
+     elsif q == 1
+      return 15
+     end
    end
 
    # Pick up a QuestObject from a Room.
    def pickUp(i)
-
-	if i.obj_name == "Herb" or "Vial"
-		puts "You're health has increased by 10 hit points!"
-		@hp = @hp + 10			
-	else
-      		@items << i	
-			end
+      @items << i	
    end
+
+   def getSizeOfPack()
+     return @items.size
+   end
+
+   def useObject(i)
+      if i.getName() == "Herb" or "Vial"
+	puts "Your health has increased by ten!"
+	@hp = @hp + 10
+
+      elsif i.getName() == "Knife"
+	return 1;
+      end
+   end
+
+   def useItemMenu() 
+     if @items.size == 0
+       puts "\nYour inventory is empty, there is nothing to use"
+       return 0;
+     elsif
+       checkItems()
+     
+      #elsif
+      #// puts "\t Your inventory contains, what would you like to use?: "
+      #// x = 1
+       #//while x < @items.size
+	#//print "\t %i." % x
+	#//item.inspect()
+	#//x = x + 1
+       #//end
+     end
+
+      system("stty raw -echo")
+      @answer = STDIN.getc
+      system("stty -raw echo")
+
+      @answer = @answer.chr.to_i - 1
+
+      if @items[@answer].getName() == "Herb"
+	puts "Your HP has increased by 10!"
+	@hp = @hp + 10
+	puts "Current HP is %i" % @hp
+	@items.delete_at(@answer)
+	return 0;
+      elsif @items[@answer].getName() == "Vial"
+	puts "Your HP has increased by 10!"
+	@hp = @hp + 10
+	puts "Current HP is %i" % @hp
+	@items.delete_at(@answer)
+      elsif
+	@items[@answer].getName() == "Knife"
+	@items.delete_at(@answer)
+	attack(1)
+	return 1;
+      end
+   end
+
+      
+
+
+
+
 
    # Output the content of the Player's inventory to the screen.
    def checkItems()
+      x = 1
       if @items.size == 0
          puts "\nYour inventory is empty"
-				 puts "\nYour current HP is: %i" % @hp
+	 puts "\nYour current HP is: %i" % @hp
       else
          puts "\nYour inventory contains: "
          for item in @items
-         item.inspect()
+	  print "\t %i." % x
+	  item.inspect()
+	  x = x + 1
          end
-				 puts "\nYour current HP is: %i" % @hp
+	 puts "\nYour current HP is: %i" % @hp
       end
    end
 end
