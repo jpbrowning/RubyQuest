@@ -52,7 +52,9 @@ require "QuestObject"
      if q == 0
       return @level * 2 + rand(3) - rand(3)
      elsif q == 1
-      return 15
+      return 30
+     elsif q == 2
+       return 10
      end
    end
 
@@ -67,17 +69,15 @@ require "QuestObject"
 
    def useObject(i)
       if i.getName() == "Herb" or "Vial"
-	puts "Your health has increased by ten!"
-	@hp = @hp + 10
-
+	
       elsif i.getName() == "Knife"
-	return 1;
       end
    end
 
    def useItemMenu() 
      if @items.size == 0
-       puts "\nYour inventory is empty, there is nothing to use"
+       puts "\nYour inventory is empty, there is nothing to use! You've wasted a turn!"
+       puts "\n"
        return 0;
      elsif
        checkItems()
@@ -98,22 +98,52 @@ require "QuestObject"
 
       @answer = @answer.chr.to_i - 1
 
-      if @items[@answer].getName() == "Herb"
-	puts "Your HP has increased by 10!"
-	@hp = @hp + 10
-	puts "Current HP is %i" % @hp
+      if @items[@answer].getCUsability() == false
+	puts "This isn't combat usable!"
+	puts "......"
+	puts "Hell-- why would you even try that?!"
+
+      elsif @items[@answer].getName() == "Herb" or @items[@answer].getName() == "Vial" 
+	if @items[@answer].getFAttr() == "Green"
+	  @hp = @hp + 5
+	  puts "Your HP has increased by 10!"
+	elsif @items[@answer].getFAttr() == "Yellow"
+	  @hp = @hp + 10
+	  puts "Your HP has increased by 10!"
+	elsif @items[@answer].getFAttr() == "Red"
+	  @hp = @hp + 15
+	  puts "Your HP has increased by 10!"
+	elsif @items[@answer].getFAttr() == "Max"
+	  @hp = @hp + 15
+	  puts "Your HP has increased by 10!"
+	elsif @items[@answer].getFAttr() == "Large"
+	  @hp = @hp + 10
+	  puts "Your HP has increased by 10!"
+	elsif @items[@answer].getFAttr() == "Small"
+	  @hp = @hp +5
+	  puts "Your HP has increased by 10!"
+	end
+	if @items[@answer].getSAttr() == "Wilted"
+	  @hp = @hp - 5
+	elsif @items[@answer].getSAttr() == "Purple"
+	  @level = @level + 1
+	  puts "\n"
+	  puts "Plus 1 Attack Boost!"
+	elsif @items[@answer].getAttr() == "Yellow"
+	  @level = @level + 2
+	  puts "Plus 2 Attack Boost!"
+	end
 	@items.delete_at(@answer)
 	return 0;
-      elsif @items[@answer].getName() == "Vial"
-	puts "Your HP has increased by 10!"
-	@hp = @hp + 10
-	puts "Current HP is %i" % @hp
+      elsif @items[@answer].getName() == "Knife"
+	if @items[@answer].getFAttr() == "Sharp"
+	  attack(1);
+	  return 1
+	else
+	  attack(2)
+	  return 2;
+	end
 	@items.delete_at(@answer)
-      elsif
-	@items[@answer].getName() == "Knife"
-	@items.delete_at(@answer)
-	attack(1)
-	return 1;
       end
    end
 
@@ -138,5 +168,9 @@ require "QuestObject"
          end
 	 puts "\nYour current HP is: %i" % @hp
       end
+   end
+
+   def getHp()
+     return @hp
    end
 end
