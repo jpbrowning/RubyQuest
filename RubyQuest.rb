@@ -66,22 +66,31 @@ puts "Press 'ENTER' to continue...."
 
 # Wait for user to input ENTER
 gets 
+@leaveThisScreen = false
+while !@leaveThisScreen
+  puts `clear`
 
-puts `clear`
+  puts "Please choose an option:"
+  puts "\t1. New game"
+  puts "\t2. Quit\n\n"
 
-puts "Please choose an option:"
-puts "\t1. New game"
-puts "\t2. Quit\n\n"
+  # This grabs the first key the user types, and does not echo it to terminal.
+  system("stty raw -echo")
+  $option = STDIN.getc
+  system("stty -raw echo")
 
-# This grabs the first key the user types, and does not echo it to terminal.
-system("stty raw -echo")
-$option = STDIN.getc
-system("stty -raw echo")
-
-# Start the game!
-if $option.chr == '1'
-   thisGame = Game.new()
-   thisGame.startGame()
-else
-   puts "Goodbye!\n\n"
+  # Start the game!
+  if $option.chr == '1'
+    thisGame = Game.new()
+    thisGame.startGame()
+    @leaveThisScreen = true
+  elsif $option.chr == '2'
+    puts "Goodbye!\n\n"
+    @leaveThisScreen = true
+  else
+    puts "That isn't a selection...why would you choose that?"
+    puts "Are you being serious? Now you get to wait a while before you try again."
+    puts "\n"
+    sleep(4)
+  end
 end
