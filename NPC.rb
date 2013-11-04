@@ -6,10 +6,6 @@
 # This class stores an NPC object, and keeps track of his stats.
 
 class NPC
-   @name
-   @level
-   @hp
-   @mp
 
    # Create NPC at certain level.
    def initialize(name, level)

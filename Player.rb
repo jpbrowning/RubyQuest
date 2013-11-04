@@ -7,12 +7,7 @@
 
 require "QuestObject"
 
-   class Player
-   @name
-   @level
-   @hp
-   @mp
-   @items
+class Player
 
    # Create player at level 1.
    def initialize(name)

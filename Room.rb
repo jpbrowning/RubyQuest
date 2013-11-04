@@ -14,12 +14,6 @@ require "NPC"
 
 class Room
    attr_accessor :objs_arr
-   @num_objs
-   @lastRoom
-   @door
-   @player
-   @hasNPC
-   @NPC
    $arr_room_attr = ["dark", "well it", "cold", "drafty", "hot", "smelly", "humid" ]
    $room_count = 1
    $floor_count = 1
