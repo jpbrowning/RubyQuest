@@ -5,6 +5,11 @@
 #
 # 
 
+# This allows us to run the program in newer versions of Ruby that do not look in 
+# the same directory for required files, for security purposes.
+# http://stackoverflow.com/questions/909855/ruby-path-management
+$LOAD_PATH.unshift File.expand_path(File.join(File.dirname(__FILE__), "..", "src"))
+
 require "Game"
 
 # Gets size of user's terminal window.
