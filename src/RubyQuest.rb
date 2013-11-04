@@ -5,7 +5,7 @@
 #
 # 
 
-# This allows us to run the program in newer versions of Ruby that do not look in 
+# This next line allows us to run the program in newer versions of Ruby that do not look in 
 # the same directory for required files, for security purposes.
 # http://stackoverflow.com/questions/909855/ruby-path-management
 $LOAD_PATH.unshift File.expand_path(File.join(File.dirname(__FILE__), "..", "src"))
@@ -75,6 +75,8 @@ gets
 while !@leaveThisScreen
   puts `clear`
 
+  puts "We see that you are using Ruby version %s.\n\n" % RUBY_VERSION
+
   puts "Please choose an option:"
   puts "\t1. New game"
   puts "\t2. Quit\n\n"
@@ -93,9 +95,7 @@ while !@leaveThisScreen
     puts "Goodbye!\n\n"
     @leaveThisScreen = true
   else
-    puts "That isn't a selection...why would you choose that?"
-    puts "Are you being serious? Now you get to wait a while before you try again."
-    puts "\n"
-    sleep(4)
+    puts "Please select a valid option.\n\n"
+    sleep(2)
   end
 end

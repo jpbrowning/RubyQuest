@@ -71,7 +71,7 @@ class Player
 
    def useItemMenu() 
      if @items.size == 0
-       puts "\nYour inventory is empty, there is nothing to use! You've wasted a turn!"
+       puts "\nYour inventory is empty!"
        puts "\n"
        return 0;
      elsif
@@ -156,15 +156,15 @@ class Player
       x = 1
       if @items.size == 0
          puts "\nYour inventory is empty"
-	 puts "\nYour current HP is: %i" % @hp
+	      puts "\nYour current HP is: %i" % @hp
       else
          puts "\nYour inventory contains: "
          for item in @items
-	  print "\t %i." % x
-	  item.inspect()
-	  x = x + 1
+         	print "\t %i." % x
+         	item.inspect()
+         	x = x + 1
          end
-	 puts "\nYour current HP is: %i" % @hp
+	     puts "\nYour current HP is: %i" % @hp
       end
    end
 
