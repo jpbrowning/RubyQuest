@@ -6,7 +6,7 @@
 # This class handles a floor of our text adventure game
 # Each floor will contain a random number of floors.
 
-require_relative 'Room'
+require "Room"
 
 class Floor
 

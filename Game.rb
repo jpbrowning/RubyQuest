@@ -4,8 +4,8 @@
 # Game.rb
 # This holds the instance of a game.
 
-require_relative "Floor"
-require_relative "Player"
+require "Floor"
+require "Player"
 
 class Game
    

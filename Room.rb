@@ -8,9 +8,9 @@
 # Rooms are randomly generated-- this means that the contents
 # within the room are never the same.
 
-require_relative "QuestObject"
-require_relative "Door"
-require_relative "NPC"
+require "QuestObject"
+require "Door"
+require "NPC"
 
 class Room
    attr_accessor :objs_arr

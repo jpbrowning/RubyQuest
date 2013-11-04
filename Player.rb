@@ -5,7 +5,7 @@
 
 # This class stores the player object, and keeps track of his stats.
 
-require_relative "QuestObject"
+require "QuestObject"
 
    class Player
    @name
