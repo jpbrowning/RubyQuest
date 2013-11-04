@@ -5,7 +5,7 @@
 #
 # 
 
-require "Game"
+require_relative "Game"
 
 # Gets size of user's terminal window.
 width = `/usr/bin/env tput cols`.to_i
