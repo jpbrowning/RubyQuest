@@ -106,25 +106,27 @@ require_relative "QuestObject"
       elsif @items[@answer].getName() == "Herb" or @items[@answer].getName() == "Vial" 
 	if @items[@answer].getFAttr() == "Green"
 	  @hp = @hp + 5
-	  puts "Your HP has increased by 10!"
+	  puts "Your HP has increased by 5!"
 	elsif @items[@answer].getFAttr() == "Yellow"
 	  @hp = @hp + 10
 	  puts "Your HP has increased by 10!"
 	elsif @items[@answer].getFAttr() == "Red"
 	  @hp = @hp + 15
-	  puts "Your HP has increased by 10!"
+	  puts "Your HP has increased by 15!"
 	elsif @items[@answer].getFAttr() == "Max"
 	  @hp = @hp + 15
-	  puts "Your HP has increased by 10!"
+	  puts "Your HP has increased by 15!"
 	elsif @items[@answer].getFAttr() == "Large"
 	  @hp = @hp + 10
 	  puts "Your HP has increased by 10!"
 	elsif @items[@answer].getFAttr() == "Small"
 	  @hp = @hp +5
-	  puts "Your HP has increased by 10!"
+	  puts "Your HP has increased by 5!"
 	end
 	if @items[@answer].getSAttr() == "Wilted"
 	  @hp = @hp - 5
+	  puts "Wilted herb deducted 5 hp!"
+	  
 	elsif @items[@answer].getSAttr() == "Purple"
 	  @level = @level + 1
 	  puts "\n"
