@@ -129,8 +129,9 @@ require "QuestObject"
 	  @level = @level + 1
 	  puts "\n"
 	  puts "Plus 1 Attack Boost!"
-	elsif @items[@answer].getAttr() == "Yellow"
+	elsif @items[@answer].getSAttr() == "Yellow"
 	  @level = @level + 2
+	  puts "\n"
 	  puts "Plus 2 Attack Boost!"
 	end
 	@items.delete_at(@answer)
