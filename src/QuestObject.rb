@@ -137,6 +137,12 @@ class QuestObject
       puts @obj_secondattr
       #puts "X is currently: %i." % @x
    end
+   
+   def makeTuba()
+     @obj_name = "Tuba"
+     @obj_attr = "Gold"
+     @obj_secondattr = "Radiant"
+   end
 
    def getName()
      return @obj_name
