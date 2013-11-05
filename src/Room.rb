@@ -6,7 +6,7 @@
 
 # This class handles rooms in our adventure text game
 # Rooms are randomly generated-- this means that the contents
-# within the room are  rarely ever the same.
+# within the room are never the same.
 
 require "QuestObject"
 require "Door"
@@ -14,13 +14,22 @@ require "NPC"
 
 class Room
    attr_accessor :objs_arr
-   $arr_room_attr = ["dark", "well it", "cold", "drafty", "hot", "smelly", "humid" ]
-   $npc_names = ["Orc", "Giant Wasp", "Troll", "Goblin", "Zombie"]
+   @num_objs
+   @lastRoom
+   @door
+   @player
+   @hasNPC
+   @NPC
+   $arr_room_attr = ["dark", "well it", "cold", "drafty", "hot", 
+   $npc_names = ["Orc", "Giant Wasp", "Troll", "Goblin", "Zombie", "Dr. Roche"]"smelly", "humid" ]
    $room_count = 1
    $floor_count = 1
    $thisRet = 2
    $width = `/usr/bin/env tput cols`.to_i
 
+
+   # Decide if there will be an NPC in this room or not, and create 
+   # x QuestObjects in the room.
 
    # Decide if there will be an NPC in this room or not, and create 
    # x QuestObjects in the room.
@@ -33,7 +42,7 @@ class Room
       @num_objs = x
       @objs_arr = Array.new(x) { QuestObject.new }
    end
-
+ 
    # Put the door in here, and link the room we just came from, and 
    # the next one to this Room. Also build our QuestObjects.
    #
@@ -65,6 +74,8 @@ class Room
       for obj in @objs_arr
          obj.buildObject
       end
+      
+
    end
 
    # Enter this room.
@@ -72,7 +83,8 @@ class Room
       x = rand(7)
       @player = p
       puts `clear`
-      puts "You enter a %s room..." % $arr_room_attr[x]
+      puts "You enter a %s room.\n\n" % $arr_room_attr[x]
+      menu() 
       if @hasNPC == true
          puts "...and see a %s blocking the next door!\n\n" % @NPC.getName()
       end
@@ -83,12 +95,12 @@ class Room
    # there is no NPC present, blocking the path.
    def menu()
       if $thisRet == 0
-      	$room_count = $room_count + 1
-      	$thisRet = 3
+	$room_count = $room_count + 1
+	$thisRet = 3
       elsif $thisRet == 1
-      	$floor_count = $floor_count + 1
-      	$room_count = 1
-      	$thisRet = 3
+	$floor_count = $floor_count + 1
+	$room_count = 1
+	$thisRet = 3
       else
       end
 
@@ -99,10 +111,10 @@ class Room
       puts @player.getHp()
       @widthCheck = 0
       while @widthCheck < $width
-      	print "_"
-      	@widthCheck = @widthCheck + 1
+	print "_"
+	@widthCheck = @widthCheck + 1
       end
-      puts "\n"      
+      puts "\n"
       puts "What would you like to do?"
       puts "\t1. Look around.\n"
       puts "\t2. Check inventory and status.\n"
@@ -111,7 +123,9 @@ class Room
       if @hasNPC == true
          puts "\t5. Interact with %s.\n" % @NPC.getName()
       end
-      puts "\n\n\tPress 'Q' if you would like to quit."
+      puts ""
+      puts ""
+      puts "\tq or 'Q'. If this game is too much, and you'd like to quit..."
 
       system("stty raw -echo")
       @answer = STDIN.getc
