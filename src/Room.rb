@@ -6,7 +6,7 @@
 
 # This class handles rooms in our adventure text game
 # Rooms are randomly generated-- this means that the contents
-# within the room are never the same.
+# within the room are  rarely ever the same.
 
 require "QuestObject"
 require "Door"
