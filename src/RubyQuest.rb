@@ -71,31 +71,33 @@ puts "Press 'ENTER' to continue...."
 
 # Wait for user to input ENTER
 gets 
+
 @leaveThisScreen = false
+
 while !@leaveThisScreen
-  puts `clear`
-
-  puts "We see that you are using Ruby version %s.\n\n" % RUBY_VERSION
-
-  puts "Please choose an option:"
-  puts "\t1. New game"
-  puts "\t2. Quit\n\n"
-
-  # This grabs the first key the user types, and does not echo it to terminal.
-  system("stty raw -echo")
-  $option = STDIN.getc
-  system("stty -raw echo")
-
-  # Start the game!
-  if $option.chr == '1'
-    thisGame = Game.new()
-    thisGame.startGame()
-    @leaveThisScreen = true
-  elsif $option.chr == '2'
-    puts "Goodbye!\n\n"
-    @leaveThisScreen = true
-  else
-    puts "Please select a valid option.\n\n"
-    sleep(2)
-  end
+   puts `clear`
+   
+   puts "We see that you are using Ruby version %s.\n\n" % RUBY_VERSION
+   
+   puts "Please choose an option:"
+   puts "\t1. New game"
+   puts "\t2. Quit\n\n"
+   
+   # This grabs the first key the user types, and does not echo it to terminal.
+   system("stty raw -echo")
+   $option = STDIN.getc
+   system("stty -raw echo")
+   
+   # Start the game!
+   if $option.chr == '1'
+      thisGame = Game.new()
+      thisGame.startGame()
+      @leaveThisScreen = true
+   elsif $option.chr == '2'
+      puts "Goodbye!\n\n"
+      @leaveThisScreen = true
+   else
+      puts "Please select a valid option.\n\n"
+      sleep(2)
+   end
 end
