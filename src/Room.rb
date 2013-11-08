@@ -246,7 +246,7 @@ class Room
       elsif @answer.chr == '2'
          retInt = @player.useItem(@battle)
          if retInt == 0
-             
+            # Do nothing
          elsif retInt >= 1
             damage = @player.attack(retInt)
             puts "You attack %s for %s!\n" % [@NPC.getName(), damage.to_s]

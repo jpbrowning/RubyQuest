@@ -34,6 +34,7 @@ class Door
          nextFloor.start(player)
       else
          puts "You have reached the end."
+         puts "\n\nCongrats, %s. You have beaten RubyQuest!" % player.getName()
          exit
       end
    end

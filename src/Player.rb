@@ -82,7 +82,7 @@ class Player
       end
    end
    
-   def useItem(battle) 
+   def useItem(battle)
       if @items.size == 0
          puts "\nYour inventory is empty, there is nothing to use!"
          puts "\n"
@@ -97,8 +97,8 @@ class Player
    
       @answer = @answer.chr.to_i - 1
       
-      if (@items[@answer].getCUsability() == false) && (battle)
-         puts "This isn't combat usable!"
+      if @items[@answer].getCUsability() == false and battle == true
+         puts "\n\nThis isn't combat usable!"
          return 0
    
       elsif @items[@answer].getName() == "Herb" or @items[@answer].getName() == "Vial" 
@@ -180,6 +180,9 @@ class Player
          else 
             puts "You play a sweet harmony."
          end
+         
+      elsif @items[@answer].getName() == "Key"
+         puts "The key's usefulness is mysterious to all."
       end
    end
    
