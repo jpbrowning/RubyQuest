@@ -157,6 +157,7 @@ class Player
                puts "You can only use this in battle!"
             end
          end
+         
       elsif @items[@answer].getName() == "Body"
          puts `clear`
          puts green('Body reanimates, the Zombie leaves a gold, shinny object')
@@ -164,11 +165,21 @@ class Player
          puts green('It\'s bad guy slaying time')
          puts red("Tuba has been added to your inventory!")
          puts "\n\n\n\n"
-         puts "You attack with the Tuba!"
          x = QuestObject.new
          x.makeTuba()
-         @items[@answer].insert(x)
-         return 9000;
+         @items[@answer] = x
+         if battle
+            puts "You attack with the Tuba!"
+            return 9000;
+         end
+         
+         
+      elsif @items[@answer].getName() == "Tuba"
+         if battle
+            return 9000
+         else 
+            puts "You play a sweet harmony."
+         end
       end
    end
    

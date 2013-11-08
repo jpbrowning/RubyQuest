@@ -34,6 +34,7 @@ class Door
          nextFloor.start(player)
       else
          puts "You have reached the end."
+         exit
       end
    end
 end
