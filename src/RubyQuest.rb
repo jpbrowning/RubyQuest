@@ -68,7 +68,7 @@ if $fixedWidth
    puts "AND NOW........".center(width)
 end
 
-puts "\nWelcome to Ruby Quest v0.9\n\n"
+puts "\nWelcome to Ruby Quest v1.1\n\n"
 
 puts "Press 'ENTER' to continue...."
 
