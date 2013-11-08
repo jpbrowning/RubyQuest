@@ -15,5 +15,10 @@ in the same variable, and have the two different methods above (.choice and .sam
 
 This is our first real program in Ruby, which is why most of the code is relatively simple.
 
+The game takes the player through a few floors, with a few rooms in each, until he or she is able to reach the end.
+Different objects may show up in the rooms along the way, and some of these can be used to survive. The game may 
+generate in such a way that it is very difficult, if not impossible to win. Conversely, it may be extremely generous,
+and the player will be able to win with no problem. Play it more than once for a different experience each time.
+
 Written by James Browning and Joey DeLorenzo.
 GitHub: https://github.com/jpbrowning/RubyQuest
