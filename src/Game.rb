@@ -29,7 +29,9 @@ class Game
       system("stty raw -echo")
       STDIN.getc
       system("stty -raw echo")
-      @floor_arr = Array.new(3) { Floor.new(3) }
+      
+      # Between 3 and 7 floors in a game.
+      @floor_arr = Array.new(3 + rand(4)) { Floor.new() }
    end
 
    # Starts the game, passing the Player into the first floor.

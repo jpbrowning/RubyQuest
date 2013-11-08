@@ -57,9 +57,9 @@ class Room
       @door = Door.new
       @door.buildObject(n)    
       
-      # If there is a bad guy in this room, build and name it.
+      # If there is a bad guy in this room, build and name it, and give it a level.
       if @hasNPC
-         @NPC = NPC.new($npc_names[rand(5)], 1)
+         @NPC = NPC.new($npc_names[rand(5)], 1 + rand(2))
       end
       
       # Build the objects in this room, if there are any.
@@ -155,9 +155,9 @@ class Room
       
       # Pick up objects
       elsif @answer.chr == '3'
-         if @num_objs.to_i == 0
+         if @objs_arr.size == 0
             puts "\nThere is nothing interesting in this room."         
-         elsif @num_objs.to_i == 0 and @hasNPC
+         elsif @objs_arr.size == 0 and @hasNPC
             puts "\nThere is nothing of interest in this room besides the lurking baddy in the corner..."         
          else
             puts "\nPick up which object?"

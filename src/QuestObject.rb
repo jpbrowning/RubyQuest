@@ -33,10 +33,12 @@ class QuestObject
       @x = rand(12) + 1
       
       # We want vials and herbs to have higher chance to show up in rooms.         
-      if @x > 8 and @x < 10
+      if @x >= 8 and @x < 10
          @objX = $objs[4]
+         @x = 4
       elsif @x >= 10
          @objX = $objs[7]
+         @x = 7
       else
          @objX = $objs[@x]
       end
@@ -81,31 +83,6 @@ class QuestObject
          @obj_pickable = false
          @combat_usability = false
       when 7
-         attrX = $herbAttr[rand(3)]
-         attrSX = $herbAttrS[rand(3)]
-         @obj_pickable = true
-         @combat_usability = true
-      when 8
-         attrX = $vialAttr[rand(3)]
-         attrSX = $vialAttrS[rand(3)]
-         @obj_pickable = true
-         @combat_usability = true
-      when 9
-         attrX = $vialAttr[rand(3)]
-         attrSX = $vialAttrS[rand(3)]
-         @obj_pickable = true
-         @combat_usability = true
-      when 10
-         attrX = $vialAttr[rand(3)]
-         attrSX = $vialAttrS[rand(3)]
-         @obj_pickable = true
-         @combat_usability = true
-      when 11
-         attrX = $herbAttr[rand(3)]
-         attrSX = $herbAttrS[rand(3)]
-         @obj_pickable = true
-         @combat_usability = true
-      when 12
          attrX = $herbAttr[rand(3)]
          attrSX = $herbAttrS[rand(3)]
          @obj_pickable = true

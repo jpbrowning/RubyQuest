@@ -11,7 +11,9 @@ require "Room"
 class Floor
 
    # Initializes the Floor, with a random number of Rooms.
-   def initialize(x)	
+   def initialize()
+      # Between 2 and 7 rooms in a floor.
+      x = 2 + rand(5)
       @room_arr = Array.new(x)
       @num_of_rooms = x
       j = 0

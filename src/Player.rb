@@ -35,6 +35,10 @@ class Player
       return @name
    end
    
+   def getLevel()
+      return @level
+   end
+   
    # Subtract the damage taken from the Player's total HP
    def takeHit(x)
       @hp = @hp - x
@@ -84,6 +88,7 @@ class Player
    
    def useItem(battle)
       if @items.size == 0
+         puts `clear`
          puts "\nYour inventory is empty, there is nothing to use!"
          puts "\n"
          return 0;
@@ -98,6 +103,7 @@ class Player
       @answer = @answer.chr.to_i - 1
       
       if @items[@answer].getCUsability() == false and battle == true
+         puts `clear`
          puts "\n\nThis isn't combat usable!"
          return 0
    
@@ -147,6 +153,7 @@ class Player
                @items.delete_at(@answer)
                return 1
             else 
+               puts `clear`
                puts "You can only use this in battle!"
             end
          else
@@ -154,6 +161,7 @@ class Player
                @items.delete_at(@answer)
                return 2
             else 
+               puts `clear`
                puts "You can only use this in battle!"
             end
          end
@@ -178,10 +186,12 @@ class Player
          if battle
             return 9000
          else 
+            puts `clear`
             puts "You play a sweet harmony."
          end
          
       elsif @items[@answer].getName() == "Key"
+         puts `clear`
          puts "The key's usefulness is mysterious to all."
       end
    end
