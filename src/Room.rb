@@ -138,7 +138,7 @@ class Room
       # Check items and status
       elsif @answer.chr == '2'
          if @player.checkItems()
-            puts "Would you like to use an item? (Y/N)"
+            puts "\n\nWould you like to use an item? (Y/N)"
             
             system("stty raw -echo")
             @answer = STDIN.getc
