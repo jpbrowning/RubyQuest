@@ -1,5 +1,5 @@
-# Joey De Lorenzo
 # James Browning
+# Joey DeLorenzo
 
 # Player.rb
 

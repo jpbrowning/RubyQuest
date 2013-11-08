@@ -1,12 +1,14 @@
-# Joey De Lorenzo
+# James Browning
+# Joey DeLorenzo
 
 # Object.rb
 
-# QuestObjects, with their various attribues, are stored as this class.
-
+# QuestObjects, with their various attribues, are stored as this class. 
+# They are randomly generated.
 
 class QuestObject
    
+   # Objects and attributes for the random number generator to select from.
    $objs = ["Door", "Chest", "Knife", "Body", "Vial", "Key", "Windows", "Herb"]
    $doorAttr = ["Old", "New", "Dusty", "Moldy", "Broken", "Creaky"]
    $doorAttrS = ["White", "Brown", "Maple", "Pine", "Cherry Wood", "Bamboo"]
@@ -27,22 +29,14 @@ class QuestObject
    
    # Decide which object this instance will be.
    def initialize
-      @x = -1
-      while @x < 0
-         @x = rand(12)-1
-      end
-         
-         
-      if @x == 8 
+      # Random number between 0 and 12
+      @x = rand(12) + 1
+      
+      # We want vials and herbs to have higher chance to show up in rooms.         
+      if @x > 8 and @x < 10
          @objX = $objs[4]
-      elsif @x == 9
-         @objX = $objs[4]
-      elsif @x == 10
-         @objX = $objs[4]
-      elsif @x == 11
-         @objX = $objs[8]
-      elsif @x == 12
-         @objX = $objs[8]
+      elsif @x >= 10
+         @objX = $objs[7]
       else
          @objX = $objs[@x]
       end
@@ -132,28 +126,34 @@ class QuestObject
       puts @obj_secondattr
    end
    
+   # Easter egg function.
    def makeTuba()
       @obj_name = "Tuba"
       @obj_attr = "Gold"
       @obj_secondattr = "Radiant"
    end
    
+   # Get the object's name.
    def getName()
       return @obj_name
    end
    
+   # Return whether or not ths item can be added to the Player's inventory.
    def getPickable()
       return @obj_pickable
    end
    
+   # Get the first attribute of the object.
    def getFAttr()
       return @obj_attr
    end
    
+   # Get the second attribute of the object.
    def getSAttr()
       return @obj_secondattr
    end
    
+   # Determine if the item can be used in combat.
    def getCUsability()
       return @combat_usability
    end

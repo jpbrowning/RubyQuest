@@ -1,5 +1,5 @@
-# @author Joey De Lorenzo
-# @author James Browning
+# James Browning
+# Joey DeLorenzo
 
 # Game.rb
 # This holds the instance of a game.

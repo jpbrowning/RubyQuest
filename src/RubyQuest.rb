@@ -1,5 +1,5 @@
-# James Browning - 140726
-# Joey DeLorenzo - 141560
+# James Browning
+# Joey DeLorenzo
 #
 # Ruby Phase 2
 #
@@ -8,14 +8,17 @@
 # This next line allows us to run the program in newer versions of Ruby that do not look in 
 # the same directory for required files, for security purposes.
 # http://stackoverflow.com/questions/909855/ruby-path-management
-$LOAD_PATH.unshift File.expand_path(File.join(File.dirname(__FILE__), "..", "src"))
+# http://stackoverflow.com/questions/11074024/how-do-i-get-the-name-of-the-current-directory-in-ruby
+$LOAD_PATH.unshift File.expand_path(File.join(File.dirname(__FILE__), "..", File.basename(Dir.getwd)))
 
+# Includes the Game.rb file
 require "Game"
 
 # Gets size of user's terminal window.
 width = `/usr/bin/env tput cols`.to_i
 height = `/usr/bin/env tput lines`.to_i
 
+# Runs "clear" as a terminal command, which clears the screen.
 puts `clear`
 
 # This checks to make sure that the user's terminal is large enough.
@@ -72,11 +75,12 @@ puts "Press 'ENTER' to continue...."
 # Wait for user to input ENTER
 gets 
 
+# The leaveThisScreen value keeps the game from quitting on invalid inputs.
 @leaveThisScreen = false
-
 while !@leaveThisScreen
    puts `clear`
    
+   # This was to test putting per-version method calls in, but we left it in for fun.
    puts "We see that you are using Ruby version %s.\n\n" % RUBY_VERSION
    
    puts "Please choose an option:"

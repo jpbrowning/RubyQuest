@@ -1,5 +1,5 @@
-# @author Joey De Lorenzo
-# @author Trey Browning
+# James Browning
+# Joey DeLorenzo
 
 # Floor.rb
 

@@ -1,5 +1,5 @@
-# Joey De Lorenzo
 # James Browning
+# Joey DeLorenzo
 
 # Room.rb
 
@@ -8,22 +8,20 @@
 # Rooms are randomly generated-- this means that the contents
 # within the room are never the same.
 
+# Files needed for Room to function
 require "QuestObject"
 require "Door"
 require "NPC"
 
 class Room
-   attr_accessor :objs_arr
+   
+   # These are the various Room and Monster attributes.
    $arr_room_attr = ["dark", "well it", "cold", "drafty", "hot", "smelly", "humid" ] 
    $npc_names = ["Orc", "Giant Wasp", "Troll", "Goblin", "Zombie", "Dr. Roche"]
    $room_count = 1
    $floor_count = 1
    $thisRet = 2
    $width = `/usr/bin/env tput cols`.to_i
-   
-   
-   # Decide if there will be an NPC in this room or not, and create 
-   # x QuestObjects in the room.
    
    # Decide if there will be an NPC in this room or not, and create 
    # x QuestObjects in the room.
@@ -36,10 +34,6 @@ class Room
       @num_objs = x
       @objs_arr = Array.new(x) { QuestObject.new }
    end
-    
-   # Put the door in here, and link the room we just came from, and 
-   # the next one to this Room. Also build our QuestObjects.
-   #
    
    # Taken from http://stackoverflow.com/questions/1489183/colorized-ruby-output
    def colorize(text, color_code)
@@ -49,7 +43,11 @@ class Room
    def red(text); colorize(text, 31); end
    def green(text); colorize(text, 32); end   
    def pink(text); colorize(text, 35); end
-   def yellow(text); colorize(text, 33); end
+   def yellow(text); colorize(text, 33); end   
+    
+   # Put the door in here, and link the room we just came from, and 
+   # the next one to this Room. Also build our QuestObjects. The variables
+   # l and n represent the previous room and the next one.
    
    def buildRoom(l, n)
       i = 0
@@ -59,10 +57,12 @@ class Room
       @door = Door.new
       @door.buildObject(n)    
       
+      # If there is a bad guy in this room, build and name it.
       if @hasNPC
          @NPC = NPC.new($npc_names[rand(5)], 1)
       end
       
+      # Build the objects in this room, if there are any.
       for obj in @objs_arr
          obj.buildObject
       end   
@@ -94,8 +94,10 @@ class Room
       else
       end  
       
+      # This is for the player to see their progress.
       puts "You are currently in room %i on floor %i" % [$room_count, $floor_count]
       
+      # HP status.
       print red("Current HP: ")
       puts @player.getHp()
       @widthCheck = 0
@@ -103,28 +105,37 @@ class Room
          print "_"
          @widthCheck = @widthCheck + 1
       end
+      
+      # Basic menu.
       puts "\n"
       puts "What would you like to do?"
       puts "\t1. Look around.\n"
       puts "\t2. Check inventory and status.\n"
       puts "\t3. Pick up object.\n"
       puts "\t4. Open door to next room.\n"
+      
+      # Only show this option if a bad guy exists.
       if @hasNPC == true
          puts "\t5. Interact with %s.\n" % @NPC.getName()
       end
+      
+      # Let the user quit.
       puts ""
       puts ""
       puts "\tq or 'Q'. If this game is too much, and you'd like to quit..."
       
+      # This grabs the next character input by the user.
       system("stty raw -echo")
       @answer = STDIN.getc
       system("stty -raw echo")
       
+      # Look around
       if @answer.chr == '1'
          lookAround()
          userIn()
          menu()
       
+      # Check items and status
       elsif @answer.chr == '2'
          if @player.checkItems()
             puts "Would you like to use an item? (Y/N)"
@@ -142,6 +153,7 @@ class Room
          userIn()
          menu()   	
       
+      # Pick up objects
       elsif @answer.chr == '3'
          if @num_objs.to_i == 0
             puts "\nThere is nothing interesting in this room."         
@@ -175,6 +187,7 @@ class Room
          userIn()
          menu()
       
+      # Go to the next room. Only works if there's no NPC present.
       elsif @answer.chr == '4'
          if @hasNPC == false
             puts "\nYou approach the door, and rest your hand on the rough surface."
@@ -186,15 +199,19 @@ class Room
             userIn()
             menu()
          end      
-         
+      
+      # Interact with the NPC in the room.
       elsif @answer.chr == '5'      
          interact()
          userIn()
          menu()   	
-         
+      
+      # Quit the game.
       elsif @answer.chr == 'q' or @answer.chr == 'Q'
          puts "Goodbye until next time!"
-         exit      
+         exit
+         
+      # Not a proper input.
       else
          puts "Not a valid option!"
          userIn()
@@ -202,7 +219,7 @@ class Room
       end
    end
    
-   #This prints out PRESS ANY KEY and waits for input from user
+   #T his prints out PRESS ANY KEY and waits for input from user
    def userIn()
       printf("\n[PRESS ANY KEY] ")
       system("stty raw -echo")
@@ -218,72 +235,86 @@ class Room
       @battle = true
       puts "\n\n"
       
+      # This is the "Battle Loop".
       while @NPC.isAlive()
-      puts "What would you like to do?"
-      puts "\t1. Attack %s." % @NPC.getName()
-      puts "\t2. Use item"
-      puts "\t3. Fall back and take cover!\n\n"
+         puts "What would you like to do?"
+         puts "\t1. Attack %s." % @NPC.getName()
+         puts "\t2. Use item"
+         puts "\t3. Fall back and take cover!\n\n"
+         
+         # Get the next key input by the user.
+         system("stty raw -echo")
+         @answer = STDIN.getc
+         system("stty -raw echo")
       
-      system("stty raw -echo")
-      @answer = STDIN.getc
-      system("stty -raw echo")
-      
-      if @answer.chr == '1'
-         puts `clear`
-         damage = @player.attack(0)
-         if damage > 0
-            puts "You attack %s for %s!\n" % [@NPC.getName(), damage.to_s]
-            @NPC.takeHit(damage)
-            if @NPC.getHealth() < 1
-               puts "You have killed %s!\n\n" % @NPC.getName()
-               @hasNPC = false
-               break
+         # Attack.
+         if @answer.chr == '1'
+            puts `clear`
+            damage = @player.attack(0)
+            if damage > 0
+               puts "You attack %s for %s!\n" % [@NPC.getName(), damage.to_s]
+               @NPC.takeHit(damage)
+               if @NPC.getHealth() < 1
+                  puts "You have killed %s!\n\n" % @NPC.getName()
+                  @hasNPC = false
+                  break
+               end
+               puts "%s's health drops to %s!\n\n" % [@NPC.getName(), @NPC.getHealth().to_s]
+            else
+               puts "You missed!\n\n"
             end
-            puts "%s's health drops to %s!\n\n" % [@NPC.getName(), @NPC.getHealth().to_s]
+            
+         # Use Item.
+         elsif @answer.chr == '2'
+            retInt = @player.useItem(@battle)
+            if retInt == 0
+               # Do nothing
+            elsif retInt >= 1
+               damage = @player.attack(retInt)
+               puts "You attack %s for %s!\n" % [@NPC.getName(), damage.to_s]
+               @NPC.takeHit(damage)
+               if @NPC.getHealth() < 1
+                  puts "You have killed %s!\n\n" % @NPC.getName()
+                  @battle = false
+                  @hasNPC = false
+                  break
+               end
+               puts "%s's health drops to %s!\n\n" % [@NPC.getName(), @NPC.getHealth().to_s]
+            end
+            
+         # Fall back and take cover.
+         elsif @answer.chr == '3'
+            @battle = false
+            break
+            
+         # Invalid option.
          else
-            puts "You missed!\n\n"
+            puts "Not a valid option! You've wasted a turn!"
          end
-      elsif @answer.chr == '2'
-         retInt = @player.useItem(@battle)
-         if retInt == 0
-            # Do nothing
-         elsif retInt >= 1
-            damage = @player.attack(retInt)
-            puts "You attack %s for %s!\n" % [@NPC.getName(), damage.to_s]
-            @NPC.takeHit(damage)
-            if @NPC.getHealth() < 1
-               puts "You have killed %s!\n\n" % @NPC.getName()
-               @battle = false
-               @hasNPC = false
-               break
+      
+         puts "\n"      
+      
+         # The bad guy attacks the user.
+         badDamage = @NPC.attack()
+         
+         # If he hits.
+         if badDamage > 0
+            puts "%s attacks you for %s!\n" % [@NPC.getName(), badDamage.to_s]
+            @player.takeHit(badDamage)
+            if @player.getHealth() < 1
+               puts "You have died! Game over.\n\n"
+               abort()
             end
-            puts "%s's health drops to %s!\n\n" % [@NPC.getName(), @NPC.getHealth().to_s]
-         end
-      elsif @answer.chr == '3'
-         @battle = false
-         break
-      else
-         puts "Not a valid option! You've wasted a turn!"
-         #puts `clear`
-      end
-      
-      puts "\n"      
-      
-      badDamage = @NPC.attack()
-      if badDamage > 0
-         puts "%s attacks you for %s!\n" % [@NPC.getName(), badDamage.to_s]
-         @player.takeHit(badDamage)
-         if @player.getHealth() < 1
-            puts "You have died! Game over.\n\n"
-            abort()
-         end
-         puts "Your health drops to %s!\n\n" % @player.getHealth().to_s
+            puts "Your health drops to %s!\n\n" % @player.getHealth().to_s
+            
+         # Sometimes he misses.
          else
             puts "%s missed!\n\n" % @NPC.getName()
          end
       end
    end
    
+   # Use an item. 
    def useItem()
       @player.useItem(@battle)
    end
